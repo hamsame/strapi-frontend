@@ -65,6 +65,7 @@ paragraphs {
 
   return {
     props: { data },
+    revalidate: 300,
   }
 }
 

@@ -31,6 +31,7 @@ export async function getStaticProps(context) {
   const { data } = await res.json()
   return {
     props: { data },
+    revalidate: 300,
   }
 }
 
