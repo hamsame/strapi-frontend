@@ -44,7 +44,9 @@ paragraphs {
         image {
           data{
             attributes{
-              name
+              url
+              width
+              height
             }
           }
         }
@@ -69,7 +71,8 @@ paragraphs {
 export default function About({ data }) {
   const { imageParagraphs, paragraphs } = data
   const attributes1 = imageParagraphs.data[2].attributes
-  const textObj = paragraphs.data[1]
+  const textObj = paragraphs.data[1].attributes
+  const imgProps = attributes1.image.data.attributes
   return (
     <>
       <Head>
@@ -82,8 +85,8 @@ export default function About({ data }) {
         <section className={styles.aboutIntro}>
           <article>
             <Image
-              src={attributes1.image.data.url || defaultImg}
-              alt='defaultImg'
+              src={imgProps.url}
+              alt=''
               width={1600}
               height={1200}
               priority={true}
@@ -101,11 +104,11 @@ export default function About({ data }) {
         </section>
 
         <section className={styles.convert}>
-          <h1>{textObj.attributes.Title}</h1>
-          <p>{textObj.attributes.text}</p>
-          {textObj.attributes.linkURL && textObj.attributes.linkText && (
-            <Link href={textObj.attributes.linkURL}>
-              <a>{textObj.attributes.linkText}</a>
+          <h1>{textObj.Title}</h1>
+          <p>{textObj.text}</p>
+          {textObj.linkURL && textObj.linkText && (
+            <Link href={textObj.linkURL}>
+              <a>{textObj.linkText}</a>
             </Link>
           )}
         </section>

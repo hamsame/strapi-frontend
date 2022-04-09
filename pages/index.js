@@ -44,7 +44,9 @@ export async function getStaticProps(context) {
         image {
           data{
             attributes{
-              name
+              url
+              width
+              height
             }
           }
         }
@@ -69,7 +71,7 @@ export async function getStaticProps(context) {
 export default function Home({ data }) {
   const { heroSection, imageParagraphs, paragraphs } = data
   const attributes1 = heroSection.data
-  const textOBj = paragraphs.data
+  const textOBj = paragraphs.data[0].attributes
   return (
     <>
       <Head>
@@ -98,13 +100,16 @@ export default function Home({ data }) {
         <section>
           {imageParagraphs.data.slice(0, 2).map((info, index) => {
             const { attributes } = info
+            const imageURL = attributes.image.data.attributes.url
             return (
               <article className={styles.description} key={index}>
                 <Image
-                  src={attributes.image.data.url || defaultImg}
-                  alt='defaultImg'
+                  src={imageURL || defaultImg}
+                  alt=''
                   width={1600}
                   height={1200}
+                  placeholder={defaultImg}
+                  loading='eager'
                 />
                 <div>
                   <h1>{attributes.Title}</h1>
@@ -120,13 +125,12 @@ export default function Home({ data }) {
           })}
         </section>
         <section className={styles.convert}>
-          {console.log(textOBj[0].attributes)}
-          <h1>{textOBj[0].attributes.Title}</h1>
-          <p>{textOBj[0].attributes.text}</p>
-          {/*  */}
-          {textOBj[0].attributes.linkURL && textOBj[0].attributes.linkText && (
-            <Link href={textOBj[0].attributes.linkURL}>
-              <a>{textOBj[0].attributes.linkText}</a>
+          <h1>{textOBj.Title}</h1>
+          <p>{textOBj.text}</p>
+          {/*  Render link if its added to the cms*/}
+          {textOBj.linkURL && textOBj.linkText && (
+            <Link href={textOBj.linkURL}>
+              <a>{textOBj.linkText}</a>
             </Link>
           )}
         </section>
