@@ -1,0 +1,65 @@
+.hero {
+  margin-top: -3vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  background-color: red;
+  background: url('/images/heroPhoto.jpeg') center center;
+}
+
+.hero:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: inherit;
+  align-items: inherit;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.hero article {
+  width: 90%;
+  margin: auto;
+  z-index: 1;
+}
+
+.hero article * {
+  margin: 2vh 0;
+  line-height: 1.5rem;
+  color: white;
+}
+
+.description,
+.reversed {
+  width: 96%;
+  margin: 3vh auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 2rem;
+  gap: 0.6rem;
+}
+
+.description:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.convert {
+  width: 96%;
+  margin: 0 auto;
+  line-height: 2;
+}
+
+@media (max-width: 850px) {
+  .description,
+  .reversed {
+    flex-wrap: wrap;
+    margin: 5vh auto;
+  }
+}

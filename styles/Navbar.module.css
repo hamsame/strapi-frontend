@@ -1,0 +1,91 @@
+.navbar {
+  z-index: 3;
+  width: 100%;
+  padding: 2rem;
+  background: var(--primaryColor);
+  color: white;
+  position: fixed;
+  margin-bottom: 3rem;
+}
+
+.navTitle {
+  text-transform: uppercase;
+}
+
+.navbarWrapper {
+  width: 94%;
+  margin: 0 auto;
+  color: inherit;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbarWrapper ul {
+  display: flex;
+  gap: 10%;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar .navbarWrapper button {
+  display: none;
+  cursor: pointer;
+  font-size: 1.75rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: var(--primaryColor);
+  color: white;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbarWrapper {
+    flex-wrap: wrap;
+  }
+  .navbarWrapper ul {
+    position: relative;
+    margin: -2rem 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .navbarWrapper ul li {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: fadein 0.5s forwards;
+  }
+
+  .navbar .navbarWrapper button {
+    display: initial;
+    z-index: 1;
+  }
+}

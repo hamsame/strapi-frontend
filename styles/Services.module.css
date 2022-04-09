@@ -1,0 +1,17 @@
+.services {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.services section article {
+  margin: 3vh 0;
+  line-height: 2;
+}
+
+.services section p {
+  margin: 2vh 0;
+}
+
+.services section article p {
+  margin: 1vh 0;
+}
